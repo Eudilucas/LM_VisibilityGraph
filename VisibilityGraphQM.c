@@ -87,12 +87,20 @@ int main( int argc, char** argv )
     int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
-    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/deg_dist.dat","w");
+    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/deg.dat","w");
     double n = 0.0;
     for (i=0; i<100; ++i) n += hist[i];
     for (i=0; i<100; ++i)
-	if ( hist[i] ) fprintf(ptr,"%d, %f\n",i, hist[i]/n);
+	if ( hist[i] ) fprintf(ptr,"%d, %f \n",i , hist[i]/n);
     fclose(ptr);
+/*
+    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/ccdf.dat","w");
+	double F = 0.0;
+	for (i=0;i<100; i++) n+=hist[i];
+	for (i=0;i<100; i++) {
+		if (hist[i]) fprintf(ptr,"%d, %f\n",i, hist[i] )}
+*/
+
 
     return 0;
 }

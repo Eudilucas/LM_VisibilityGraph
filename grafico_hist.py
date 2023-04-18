@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 arq =open("distribuicao/deg_dist.dat", 'r') #Abrindo arquivo no modo leitura
 
@@ -15,20 +15,21 @@ for i in range(len(vec)):
 
 arq.seek(0)
 
-n=[[0]for i in range(len(vec))]
+k=[[0]for i in range(len(vec))]
 hist=[[0]for i in range(len(vec))]
 
 for i in range(len(vec)):
 	for j in range(2):
 		if (j == 0):
-			n[i]= vec[i][j]
+			k[i] = vec[i][j]
 		if (j==1):
-			hist[i] = vec[i][j] 
+			hist[i] = np.log10(vec[i][j])
 
-print(n)
-print(hist)
-plt.xlabel("n")
-plt.stem(n,hist)
+
+
+
+plt.xlabel("k")
+plt.plot(k, hist, "ro")
 
 
 plt.show()
