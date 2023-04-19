@@ -93,13 +93,7 @@ int main( int argc, char** argv )
     for (i=0; i<100; ++i)
 	if ( hist[i] ) fprintf(ptr,"%d, %f \n",i , hist[i]/n);
     fclose(ptr);
-/*
-    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/ccdf.dat","w");
-	double F = 0.0;
-	for (i=0;i<100; i++) n+=hist[i];
-	for (i=0;i<100; i++) {
-		if (hist[i]) fprintf(ptr,"%d, %f\n",i, hist[i] )}
-*/
+
 
 
     return 0;
