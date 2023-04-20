@@ -61,10 +61,10 @@ int main( int argc, char** argv )
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
     for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
-	ptr = fopen("/home/eude/Desktop/IC/caos/series_temporais/periodico.txt","w");
+	ptr = fopen("/home/eude/Desktop/IC/caos/series_temporais/caos_10000.txt","w");
 	for (i=0;i<Ndata;++i)fprintf(ptr,"%f\n",data[i]);
 
-    ptr = fopen("/home/eude/Desktop/IC/caos/arestas/LM_periodico_2000.txt","w");
+    ptr = fopen("/home/eude/Desktop/IC/caos/arestas/LM_caos_10000.txt","w");
     for (i=0; i<Ndata; ++i) deg[i] = 0;
     for (d=1; d<=Delta; ++d) {
 	for (i=0; i<Ndata-d; ++i) {
@@ -87,7 +87,7 @@ int main( int argc, char** argv )
     int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
-    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/deg.dat","w");
+    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/deg_caos.dat","w");
     double n = 0.0;
     for (i=0; i<100; ++i) n += hist[i];
     for (i=0; i<100; ++i)

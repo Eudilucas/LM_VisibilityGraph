@@ -11,7 +11,7 @@ def mostrar_matriz(A):
 		print("\n")
 
 
-arq =open("exemplo2.txt", "r") #Abrindo arquivo no modo leitura
+arq =open("arestas/LM_periodico_10000.txt", "r") #Abrindo arquivo no modo leitura
 
 #arestas/LM_periodic.txt
 vec=arq.readlines() #Transformando cada linha em entradas da lista
@@ -28,13 +28,20 @@ for i in range(len(vec)):
 
 G=nx.Graph(vec)
 
+#tam = len(nx.cliques_containing_node(G))
+
+
+a=float(nx.average_shortest_path_length(G))
+
 tam = len(nx.cliques_containing_node(G))
 
-caminho = dict(nx.shortest_path_length(G))
+arq.seek(0)
+arq.close()
 
 
+#anexar os pontos a um novo arquivo 
+arq = open("caminho/pontos.txt","a")
 
-
-mostrar_matriz(caminho)
-
-
+arq.write(str(tam) + ", " + str(a)+"\n")
+arq.seek(0)
+arq.close()

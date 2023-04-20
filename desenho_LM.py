@@ -4,7 +4,7 @@ import pygraphviz as pgv
 
 
 
-arq =open("exemplo2.txt", 'r') #Abrindo arquivo no modo leitura
+arq =open("arestas/randS.txt", 'r') #Abrindo arquivo no modo leitura
 
 vec=arq.readlines() #Transformando cada linha em entradas da lista
 
