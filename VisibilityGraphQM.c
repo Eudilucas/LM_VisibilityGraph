@@ -45,6 +45,13 @@ int main( int argc, char** argv )
     FILE *ptr;
     int i, j, k, Ndata, Delta, visible, d;
     float t, x0, r;
+    char endereco[100] ={"/home/pc/Desktop/IC/caos"};
+	char pasta[5][18]={"/series_temporais", "/arestas", "/espectral", "/hist", "/distribuicao"};
+	char caso[6][8] = {"/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc"};
+    size_t tamanho = 20;
+	time_t agora;
+	
+	agora = time(NULL);
     
     i = sscanf (argv[1],"%d",&Ndata); 
     i = sscanf (argv[2],"%d",&Delta);
@@ -61,10 +68,10 @@ int main( int argc, char** argv )
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
     for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
-	ptr = fopen("/home/eude/Desktop/IC/caos/series_temporais/caos_10000.txt","w");
+	ptr = fopen(endereco,"w");
 	for (i=0;i<Ndata;++i)fprintf(ptr,"%f\n",data[i]);
 
-    ptr = fopen("/home/eude/Desktop/IC/caos/arestas/LM_caos_10000.txt","w");
+    ptr = fopen(endereco,"w");
     for (i=0; i<Ndata; ++i) deg[i] = 0;
     for (d=1; d<=Delta; ++d) {
 	for (i=0; i<Ndata-d; ++i) {
@@ -81,13 +88,13 @@ int main( int argc, char** argv )
 	}
     }
     fclose(ptr);
-    ptr = fopen("/home/eude/Desktop/IC/caos/hist/hist.dat","w");
+    ptr = fopen(endereco,"w");
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
     int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
-    ptr = fopen("/home/eude/Desktop/IC/caos/distribuicao/deg_caos.dat","w");
+    ptr = fopen(endereco,"w");
     double n = 0.0;
     for (i=0; i<100; ++i) n += hist[i];
     for (i=0; i<100; ++i)
