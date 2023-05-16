@@ -16,9 +16,14 @@ for (( i=0; i<=2001; i++ )) #MUDAR PARA DEFINIR O LIMITE DO NUMERO DE VERTICES
 do
 #aqui deve começar o loop
 	./VisibilityGraphQM $i $i 3.5 0.1 
+
 	python3 part_2.py >> "dados/log_map/periodico_${py_filename%.*}.txt" #Nome do novo arquivo txt  
+
 done
 #aqui deve acabar o loop
+#/home/eude/Desktop/IC/caos/espectral
+
+#OBJETIVO: Fazer o script colocar os dados dos autovalores em cada diretorio.
 
 #feigenbaum
 for (( i=0; i<=2001; i++ )) #MUDAR PARA DEFINIR O LIMITE DO NUMERO DE VERTICES
