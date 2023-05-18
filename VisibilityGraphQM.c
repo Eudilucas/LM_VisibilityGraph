@@ -68,7 +68,7 @@ int main( int argc, char** argv )
     int *deg = (int *) calloc(Ndata,sizeof(int)); 
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
-	char endereco[] = {'/','h','o','m','e','/','e','u','d','e','/','D','e','s','k','t','o','p','/','I','C','/','c','a','o','s','/','s','e','r','i','e','s','_','t','e','m','p','o','r','a','i','s','/'}, p1[] = {'/','L','M','_','p','1'}, fbp[]={'/','L','M','_','f','b','p'}, inte[]={'/','L','M','_','i','n','t'}, c1[]={'/','L','M','_','c','1'}, c2[]={'/','L','M','_','c','2'}, fc[]={'/','L','M','_','f','c'};
+	char endereco[] = 
     for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
 
 	ptr = fopen(endereco,"w");
@@ -109,15 +109,4 @@ int main( int argc, char** argv )
 
     return 0;
 }
-
-void concatenaString(char string1[], int a, char string2[], int b, char string3[]){
-
-	int i, j;
-	
-
-	for (i=0;i<a;++i){
-		string3[i]=string1[i];}
-	for(j=0;j<b;++j){
-		string3[j+a]=string2[j];
-}}
 
