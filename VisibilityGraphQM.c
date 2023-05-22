@@ -5,7 +5,7 @@
 #include <string.h>
 #include <math.h>
 #include <stdint.h>
-#define __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS //pre-processamento
 #include <inttypes.h>
 
 static inline uint64_t rotl(const uint64_t x, int k) {
@@ -39,28 +39,23 @@ uint64_t seed(uint64_t x) {
 double rnd(uint64_t x) {
 	return (x >> 11) * (1. / (UINT64_C(1) << 53)); //retorna um double em [0,1)
 }
-//============================================= ASSUMO MINHA IGNORANCIA DAQUI PRA CIMA =================================
+//================================== ASSUMO MINHA IGNORANCIA DAQUI PRA CIMA ======================================
 int main( int argc, char** argv )
 {
     FILE *ptr;
     int i, j, k, Ndata, Delta, visible, d;
     float t, x0, r;
-
-    char endereco[100] ={"/home/pc/Desktop/IC/caos"};
-	char pasta[5][18]={"/series_temporais", "/arestas", "/espectral", "/hist", "/distribuicao"};
-	char caso[6][8] = {"/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc"};
-    size_t tamanho = 20;
-	time_t agora;
+    char endereco[100];
+	char diretorio_arquivo(int i, int j, int k);
+	    	
 	
-	agora = time(NULL);
-    
-    i = sscanf (argv[1],"%d",&Ndata); 
-    i = sscanf (argv[2],"%d",&Delta);
-    i = sscanf (argv[3],"%f",&r);
-    i = sscanf (argv[4],"%f",&x0); //Como i recebe 4 entradas?
+	sscanf (argv[1],"%d",&Ndata); 
+	sscanf (argv[2],"%d",&Delta);
+	sscanf (argv[3],"%f",&r);
+	sscanf (argv[4],"%f",&x0);
 
     srand( time(0) );
-    uint64_t x, st[4]; // Isso me parece ser da aleatóriedade dos números
+    uint64_t x, st[4]; //Isso me parece ser da aleatóriedade dos números
     for (j=0; j<4; ++j) {
 	for (i=0; i<100; ++i) x = rand();
 	st[j] = seed(x);
@@ -68,14 +63,19 @@ int main( int argc, char** argv )
     int *deg = (int *) calloc(Ndata,sizeof(int)); 
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
-	char endereco[] = 
+
     for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
 
-	ptr = fopen(endereco,"w");
+	diretorio_arquivo(0,0,Ndata)
+	ptr = fopen(endereco,"w"); //endereco
+
+
+
+	
 
 	for (i=0;i<Ndata;++i)fprintf(ptr,"%f\n",data[i]);
 
-    ptr = fopen(endereco,"w");
+    ptr = fopen(endereco,"w"); //endereco
     for (i=0; i<Ndata; ++i) deg[i] = 0;
     for (d=1; d<=Delta; ++d) {
 	for (i=0; i<Ndata-d; ++i) {
@@ -92,13 +92,20 @@ int main( int argc, char** argv )
 	}
     }
     fclose(ptr);
-    ptr = fopen(endereco,"w");
+    
+	
+
+    ptr = fopen(endereco,"w");//endereco
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
     int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
-    ptr = fopen(endereco,"w");
+    
+    
+	
+
+    ptr = fopen(endereco,"w");//endereco
     double n = 0.0;
     for (i=0; i<100; ++i) n += hist[i];
     for (i=0; i<100; ++i)
@@ -108,5 +115,53 @@ int main( int argc, char** argv )
 
 
     return 0;
+}
+
+char diretorio_arquivo(int i, int j, int k){
+	
+	
+	char diretorio[30] = {"/home/pc/Desktop/IC/caos"};
+	char pasta[5][18]={"/series_temporais", "/arestas", "/hist", "/distribuicao"};
+	char caso[6][8] = {"/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc"};
+	char nome[6], copia[5];
+		
+	
+	
+	
+	
+	strcat(endereco, diretorio);
+	if (i == 0){
+	strcat(endereco, pasta[0])};
+	if (i == 1){
+	strcat(endereco, pasta[1])};
+	if (i == 2){
+	strcat(endereco, pasta[2])};
+	if (i == 3){
+	strcat(endereco, pasta[3])};
+	
+	if(j == 0){
+	strcat(endereco, caso[0])};
+	if(j == 1){
+	strcat(endereco, caso[1])};
+	if(j == 2){
+	strcat(endereco, caso[2])};
+	if(j == 3){
+	strcat(endereco, caso[3])};
+	if(j == 4){
+	strcat(endereco, caso[4])};
+	if(j == 5){
+	strcat(endereco, caso[5])};
+	
+	
+	sprintf(copia,"%i",k);
+	strcat(nome, copia);
+	strcat(endereco, nome);
+
+
+
+
+
+
+return endereco;
 }
 
