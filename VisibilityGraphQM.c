@@ -45,8 +45,8 @@ int main( int argc, char** argv )
     FILE *ptr;
     int i, j, k, Ndata, Delta, visible, d;
     float t, x0, r;
-    char endereco[100];
-	char diretorio_arquivo(int i, int j, int k);
+    char endereco1[100], endereco2[100], endereco3[100], endereco4[100];
+	void diretorio_arquivo(int i, float j, int k, char* endereco);
 	    	
 	
 	sscanf (argv[1],"%d",&Ndata); 
@@ -66,16 +66,17 @@ int main( int argc, char** argv )
 
     for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
 
-	diretorio_arquivo(0,0,Ndata)
-	ptr = fopen(endereco,"w"); //endereco
+	diretorio_arquivo(0,r,Ndata, endereco1);
+	printf("%s\n", endereco1);
+	ptr = fopen(endereco1,"w"); //endereco
 
 
 
 	
 
 	for (i=0;i<Ndata;++i)fprintf(ptr,"%f\n",data[i]);
-
-    ptr = fopen(endereco,"w"); //endereco
+	diretorio_arquivo(1,r,Ndata,endereco2);
+    ptr = fopen(endereco2,"w"); //endereco
     for (i=0; i<Ndata; ++i) deg[i] = 0;
     for (d=1; d<=Delta; ++d) {
 	for (i=0; i<Ndata-d; ++i) {
@@ -94,8 +95,8 @@ int main( int argc, char** argv )
     fclose(ptr);
     
 	
-
-    ptr = fopen(endereco,"w");//endereco
+	diretorio_arquivo(2,r,Ndata,endereco3);
+    ptr = fopen(endereco3,"w");//endereco
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
     int *hist = (int *) calloc(100,sizeof(int));
@@ -104,8 +105,8 @@ int main( int argc, char** argv )
     
     
 	
-
-    ptr = fopen(endereco,"w");//endereco
+	diretorio_arquivo(3,r,Ndata,endereco4);
+    ptr = fopen(endereco4,"w");//endereco
     double n = 0.0;
     for (i=0; i<100; ++i) n += hist[i];
     for (i=0; i<100; ++i)
@@ -117,51 +118,48 @@ int main( int argc, char** argv )
     return 0;
 }
 
-char diretorio_arquivo(int i, int j, int k){
-	
-	
-	char diretorio[30] = {"/home/pc/Desktop/IC/caos"};
-	char pasta[5][18]={"/series_temporais", "/arestas", "/hist", "/distribuicao"};
-	char caso[6][8] = {"/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc"};
-	char nome[6], copia[5];
-		
-	
-	
-	
-	
+void diretorio_arquivo(int i, float j, int k, char* endereco) {
+
+	char diretorio[30] = "/home/pc/Desktop/IC/caos";
+	char pasta[5][18] = { "/series_temporais", "/arestas", "/hist", "/distribuicao" };
+	char caso[6][8] = { "/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc" };
+	char nome[6] = "", copia[5] = "";
+
 	strcat(endereco, diretorio);
-	if (i == 0){
-	strcat(endereco, pasta[0])};
-	if (i == 1){
-	strcat(endereco, pasta[1])};
-	if (i == 2){
-	strcat(endereco, pasta[2])};
-	if (i == 3){
-	strcat(endereco, pasta[3])};
-	
-	if(j == 0){
-	strcat(endereco, caso[0])};
-	if(j == 1){
-	strcat(endereco, caso[1])};
-	if(j == 2){
-	strcat(endereco, caso[2])};
-	if(j == 3){
-	strcat(endereco, caso[3])};
-	if(j == 4){
-	strcat(endereco, caso[4])};
-	if(j == 5){
-	strcat(endereco, caso[5])};
-	
-	
-	sprintf(copia,"%i",k);
+	if (i == 0) {
+		strcat(endereco, pasta[0]);
+	} else if (i == 1) {
+		strcat(endereco, pasta[1]);
+	} else if (i == 2) {
+		strcat(endereco, pasta[2]);
+	} else if (i == 3) {
+		strcat(endereco, pasta[3]);
+	} else {
+		printf("Valor inválido de i\n");
+		return;
+	}
+
+	if (j == 3.5) {
+		strcat(endereco, caso[0]);
+	} else if (j == 3.56995) {
+		strcat(endereco, caso[1]);
+	} else if (j == 3.857) {
+		strcat(endereco, caso[2]);
+	} else if (j == 3.87) {
+		strcat(endereco, caso[3]);
+	} else if (j == 3.89) {
+		strcat(endereco, caso[4]);
+	} else if (j == 4.00) {
+		strcat(endereco, caso[5]);
+	} else {
+		printf("Caso nao existente de r\n");
+		return;
+	}
+
+	sprintf(copia, "%i", k);
 	strcat(nome, copia);
+	strcat(nome, ".txt");
 	strcat(endereco, nome);
 
-
-
-
-
-
-return endereco;
 }
 
