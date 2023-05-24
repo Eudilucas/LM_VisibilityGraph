@@ -45,7 +45,7 @@ int main( int argc, char** argv )
     FILE *ptr;
     int i, j, k, Ndata, Delta, visible, d;
     float t, x0, r;
-    char endereco1[100], endereco2[100], endereco3[100], endereco4[100];
+    char endereco1[200]="", endereco2[200]="", endereco3[200]="", endereco4[200]="";
 	void diretorio_arquivo(int i, float j, int k, char* endereco);
 	    	
 	
@@ -63,19 +63,22 @@ int main( int argc, char** argv )
     int *deg = (int *) calloc(Ndata,sizeof(int)); 
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
-
-    for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
-
+    
 	diretorio_arquivo(0,r,Ndata, endereco1);
-	printf("%s\n", endereco1);
-	ptr = fopen(endereco1,"w"); //endereco
-
-
-
+	diretorio_arquivo(1,r,Ndata, endereco2);
+	diretorio_arquivo(2,r,Ndata, endereco3);
+	diretorio_arquivo(3,r,Ndata, endereco4);
+			
+	
+	
+    for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
 	
 
+	ptr = fopen(endereco1,"w"); //endereco
 	for (i=0;i<Ndata;++i)fprintf(ptr,"%f\n",data[i]);
-	diretorio_arquivo(1,r,Ndata,endereco2);
+	fclose(ptr);
+	
+	
     ptr = fopen(endereco2,"w"); //endereco
     for (i=0; i<Ndata; ++i) deg[i] = 0;
     for (d=1; d<=Delta; ++d) {
@@ -94,19 +97,17 @@ int main( int argc, char** argv )
     }
     fclose(ptr);
     
-	
-	diretorio_arquivo(2,r,Ndata,endereco3);
+    
     ptr = fopen(endereco3,"w");//endereco
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
+    
     int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
     
-    
-	
-	diretorio_arquivo(3,r,Ndata,endereco4);
     ptr = fopen(endereco4,"w");//endereco
+
     double n = 0.0;
     for (i=0; i<100; ++i) n += hist[i];
     for (i=0; i<100; ++i)
@@ -119,11 +120,10 @@ int main( int argc, char** argv )
 }
 
 void diretorio_arquivo(int i, float j, int k, char* endereco) {
-
 	char diretorio[30] = "/home/pc/Desktop/IC/caos";
-	char pasta[5][18] = { "/series_temporais", "/arestas", "/hist", "/distribuicao" };
+	char pasta[4][18] = { "/series_temporais", "/arestas", "/hist", "/distri_grau" };
 	char caso[6][8] = { "/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc" };
-	char nome[6] = "", copia[5] = "";
+	char nome[13] = "", copia[5] = "", barra[6]="/";
 
 	strcat(endereco, diretorio);
 	if (i == 0) {
@@ -157,9 +157,8 @@ void diretorio_arquivo(int i, float j, int k, char* endereco) {
 	}
 
 	sprintf(copia, "%i", k);
-	strcat(nome, copia);
+	strcat(barra, copia);
+	strcat(nome, barra);
 	strcat(nome, ".txt");
 	strcat(endereco, nome);
-
 }
-
