@@ -8,7 +8,39 @@ def mostrar_matriz(A):
 	for i in range(len(A)):
 		for j in range(len(A[0])):
 			print(A[i][j])
+			
 
+def diretorio(#int caso, int nome e a str string de volta):
+	str matriz = ["/home/pc/Desktop/IC/caos/arestas"]
+	str casos = ["/LM_p1","LM_int","LM_fbp","LM_c1","LM_c2","LM_fc"]
+	str barra = "/"
+	str tipo = ".txt"
+	int i
+	
+	if (i == 3.5):
+			string_de_volta = str(matriz+casos[0]+barra+nome+tipo)
+			else if (i == 3.):
+						string_de_volta = str(matriz+casos[1]+barra+nome+tipo)
+			else if (i == 3.):
+			string_de_volta = str(matriz+casos[2]+barra+nome+tipo)
+			else if (i == 3.):
+			string_de_volta = str(matriz+casos[3]+barra+nome+tipo)
+			else if (i == 3.):
+			string_de_volta = str(matriz+casos[4]+barra+nome+tipo)
+			else if (i == 3.):
+						string_de_volta = str(matriz+casos[5]+barra+nome+tipo)
+			else if (i == 4.):
+
+
+	str (nome)
+	
+	string_de_volta = str(matriz+casos+barra+nome+tipo)
+	
+	
+valor1 = int(input(""))
+valor2 = float(input(""))
+valor3 = (input(""))
+valor4 = (input(""))
 arq =open("exemplo2.txt", 'r') #Abrindo arquivo no modo leitura
 
 vec=arq.readlines() #Transformando cada linha em entradas da lista
