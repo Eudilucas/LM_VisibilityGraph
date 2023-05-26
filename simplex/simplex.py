@@ -10,38 +10,41 @@ def mostrar_matriz(A):
 			print(A[i][j])
 			
 
-def diretorio(#int caso, int nome e a str string de volta):
-	str matriz = ["/home/pc/Desktop/IC/caos/arestas"]
-	str casos = ["/LM_p1","LM_int","LM_fbp","LM_c1","LM_c2","LM_fc"]
-	str barra = "/"
-	str tipo = ".txt"
-	int i
+
+def diretorio(caso, nome):
+	matriz = '/home/pc/Desktop/IC/caos/arestas'
+	casos = ['/LM_p1','LM_int','LM_fbp','LM_c1','LM_c2','LM_fc']
+	barra = '/'
+	tipo = '.txt'
 	
-	if (i == 3.5):
-			string_de_volta = str(matriz+casos[0]+barra+nome+tipo)
-			else if (i == 3.):
-						string_de_volta = str(matriz+casos[1]+barra+nome+tipo)
-			else if (i == 3.):
-			string_de_volta = str(matriz+casos[2]+barra+nome+tipo)
-			else if (i == 3.):
-			string_de_volta = str(matriz+casos[3]+barra+nome+tipo)
-			else if (i == 3.):
-			string_de_volta = str(matriz+casos[4]+barra+nome+tipo)
-			else if (i == 3.):
-						string_de_volta = str(matriz+casos[5]+barra+nome+tipo)
-			else if (i == 4.):
+	
+	nome = str(nome)
+	caso = float(caso)
+	
+	string=''
+	
+	if (caso == 3.5):
+		string = str(matriz+casos[0]+barra+nome+tipo)
+	elif (caso == 3.56995):
+		string = str(matriz+casos[1]+barra+nome+tipo)
+	elif (caso == 3.857):
+		string = str(matriz+casos[2]+barra+nome+tipo)
+	elif (caso == 3.87):
+		string = str(matriz+casos[3]+barra+nome+tipo)
+	elif (caso == 3.89):
+		string = str(matriz+casos[4]+barra+nome+tipo)
+	elif (caso == 4):
+		string = str(matriz+casos[5]+barra+nome+tipo)
+	else:
+		print("Caso invalido")
+
+	return string
 
 
-	str (nome)
-	
-	string_de_volta = str(matriz+casos+barra+nome+tipo)
-	
-	
-valor1 = int(input(""))
-valor2 = float(input(""))
-valor3 = (input(""))
-valor4 = (input(""))
-arq =open("exemplo2.txt", 'r') #Abrindo arquivo no modo leitura
+
+pasta = diretorio(3.5, 100) 
+
+arq =open(pasta, 'r') #Abrindo arquivo no modo leitura
 
 vec=arq.readlines() #Transformando cada linha em entradas da lista
 
