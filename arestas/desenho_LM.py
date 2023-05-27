@@ -30,7 +30,11 @@ def diretorio(caso, nome):
 		print("Caso invalido")
 
 	return string
-pasta = diretorio(3.5, 100)
+	
+a = float(input('Digite o caso'))
+b = int(input('Digite o tamanho do arquivo txt'))
+	
+pasta = diretorio(a, b)
 
 arq =open(pasta, 'r') #Abrindo arquivo no modo leitura
 
@@ -63,9 +67,6 @@ plt.axis("equal")
 
 plt.draw()  # pyplot draw()
 plt.show()
-
-
-
 
 
 arq.seek(0)

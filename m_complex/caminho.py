@@ -1,7 +1,14 @@
-import networkx as nx
 import matplotlib.pyplot as plt
-import pygraphviz as pgv
+import numpy as np
+import networkx as nx
 
+
+def mostrar_matriz(A):
+	
+	for i in range(len(A)):
+		for j in range(len(A[0])):
+			print(A[i][j], end = " ")
+		print("\n")
 
 def diretorio(caso, nome):
 	matriz = '/home/pc/Desktop/IC/caos/arestas'
@@ -32,10 +39,12 @@ def diretorio(caso, nome):
 
 	return string
 
-pasta = diretorio(3.5,100)
+a = float(input('Digite o caso'))
+b = int(input('Digite o tamanho do arquivo txt'))
 
+pasta = diretorio(a,b)
+arq =open(pasta, "r")
 
-arq =open(pasta, 'r') #Abrindo arquivo no modo leitura
 
 vec=arq.readlines() #Transformando cada linha em entradas da lista
 
@@ -48,30 +57,23 @@ for i in range(len(vec)):
 		vec[i][j]=float(vec[i][j])#convertendo os valores em float e adicionando ao array vec
 
 
+
 G=nx.Graph(vec)
-#pos = nx.kamada_kawai_layout(G)
-#pos = nx.spectral_layout(G)
-pos = nx.nx_agraph.graphviz_layout(G, prog="twopi", args="")
 
-'''
-options = {
-#    "font_size": 0.2,
-    "node_size": 25,
-    "node_color": "black",
-    "edgecolors": "white",
-    "linewidths": 0.25,
-    "width": 0.25,}
-'''
-nx.draw(G, pos)
-plt.axis("equal")
-
-plt.draw()  # pyplot draw()
-plt.show()
+#tam = len(nx.cliques_containing_node(G))
 
 
+a=float(nx.average_shortest_path_length(G))
 
-
+tam = len(nx.cliques_containing_node(G))
 
 arq.seek(0)
 arq.close()
 
+
+#anexar os pontos a um novo arquivo 
+arq = open("caminho/pontos.txt","a")
+
+arq.write(str(tam) + ", " + str(a)+"\n")
+arq.seek(0)
+arq.close()

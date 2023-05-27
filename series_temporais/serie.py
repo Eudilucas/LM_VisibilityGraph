@@ -11,7 +11,7 @@ def mostrar_matriz(A):
 		print("\n")
 
 def diretorio(caso, nome):
-	matriz = '/home/pc/Desktop/IC/caos/arestas'
+	matriz = '/home/pc/Desktop/IC/caos/series_temporais'
 	casos = ['/LM_p1','LM_int','LM_fbp','LM_c1','LM_c2','LM_fc']
 	barra = '/'
 	tipo = '.txt'
@@ -39,38 +39,36 @@ def diretorio(caso, nome):
 
 	return string
 
-pasta = diretorio(3.5,100)
-arq =open(pasta, "r")
+a = float(input('Digite o caso'))
+b = int(input('Digite o tamanho do arquivo txt'))
+
+pasta = diretorio(a,b)
+
+
+arq =open(pasta, "r") #Abrindo arquivo no modo leitura
 
 
 vec=arq.readlines() #Transformando cada linha em entradas da lista
 
-for i in range(len(vec)):
-	vec[i]=vec[i].split(",") #quebrando cada todas as linhas até onde tem virgula
-arq.seek(0)
 
 for i in range(len(vec)):
-	for j in range(2):
-		vec[i][j]=float(vec[i][j])#convertendo os valores em float e adicionando ao array vec
+	vec[i]=float(vec[i])
 
 
+v=[]
+for i in range(len(vec)):
+	a=100*i
+	v.append(a)
 
-G=nx.Graph(vec)
+plt.grid(True)
+#plt.title("Autovalores em função dos vertices")
+plt.xlabel("t")
 
-#tam = len(nx.cliques_containing_node(G))
+plt.ylabel("A(t)")
+plt.plot(v,vec, "k-") #plotando um grafico de v por vec
 
+plt.show()
 
-a=float(nx.average_shortest_path_length(G))
-
-tam = len(nx.cliques_containing_node(G))
-
-arq.seek(0)
 arq.close()
 
 
-#anexar os pontos a um novo arquivo 
-arq = open("caminho/pontos.txt","a")
-
-arq.write(str(tam) + ", " + str(a)+"\n")
-arq.seek(0)
-arq.close()

@@ -11,7 +11,7 @@ def lei_de_potencia(x,a,b):
 	return a*x**b
 
 def diretorio(caso, nome):
-	matriz = '/home/pc/Desktop/IC/caos/arestas'
+	matriz = '/home/pc/Desktop/IC/caos/distri_grau'
 	casos = ['/LM_p1','LM_int','LM_fbp','LM_c1','LM_c2','LM_fc']
 	barra = '/'
 	tipo = '.txt'
@@ -39,7 +39,10 @@ def diretorio(caso, nome):
 
 	return string
 
-pasta = diretorio(3.5,100)
+u = float(input('Digite o caso'))
+v = int(input('Digite o tamanho do arquivo txt'))
+
+pasta = diretorio(u,v)
 
 arq = open(pasta, 'r') 
 

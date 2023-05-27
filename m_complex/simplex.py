@@ -40,7 +40,8 @@ def diretorio(caso, nome):
 
 	return string
 
-
+a = float(input('Digite o caso'))
+b = int(input('Digite o tamanho do arquivo txt'))
 
 pasta = diretorio(3.5, 100) 
 
