@@ -45,7 +45,7 @@ int main( int argc, char** argv )
     FILE *ptr;
     int i, j, k, Ndata, Delta, visible, d;
     float t, x0, r;
-	void concatenaString(char string1[], int a, char string2[], int b, char string3[]);    
+    
     i = sscanf (argv[1],"%d",&Ndata); 
     i = sscanf (argv[2],"%d",&Delta);
     i = sscanf (argv[3],"%f",&r);
@@ -60,7 +60,7 @@ int main( int argc, char** argv )
     int *deg = (int *) calloc(Ndata,sizeof(int)); 
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
-	char endereco[] = {'/','h','o','m','e','/','e','u','d','e','/','D','e','s','k','t','o','p','/','I','C','/','c','a','o','s','/','s','e','r','i','e','s','_','t','e','m','p','o','r','a','i','s','/'}, p1[] = {'/','L','M','_','p','1'}, fbp[]={'/','L','M','_','f','b','p'}, inte[]={'/','L','M','_','i','n','t'}, c1[]={'/','L','M','_','c','1'}, c2[]={'/','L','M','_','c','2'}, fc[]={'/','L','M','_','f','c'};
+	char endereco[] = "/home/eude/Desktop/IC/caos", series[] = "/series_temporais",arestas[]="arestas",histo[] = "/hist",distribuicao[]="distribuicao",p1[] = "/LM_p1", fbp[]="/LM_fbp", inte[]="/LM_int", c1[]="/LM_c1", c2[]="/LM_c2", fc[]="/LM_fc";
     for (i=1; i<Ndata; ++i) data[i] = r*data[i-1]*(1-data[i-1]);// logistic map
 	ptr = fopen("endereco/teste.txt","w");
 	for (i=0;i<Ndata;++i)fprintf(ptr,"%f\n",data[i]);
