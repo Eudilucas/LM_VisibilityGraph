@@ -1,0 +1,35 @@
+@dilucas
+
+Quanto a utilização do programa.
+
+O Visibility é a matriz do programa. Entretanto apenas ele só será possivel ver dados
+Para que possa ver as medidas é necessario rodas os programas postos dentro da pasta 
+arestas. Lá serão exibidas as principais medidas de complexidade extraidas do Visibility
+
+O programa Visibility é feito em C e portanto necessita de ser compilado e rodado.
+Quanto as medidas de complexidade são feitas em python ou seja é interpretada a medida que é 
+rodada.
+
+Para rodar o Visibility entre no terminal dentro do diretorio do programa e use:
+
+$ gcc VisibilityGraphQM.c -o VisibilityGraphQM
+$./VisibilityGraphQM <numero de dados> <distancia entre visinhos> <caso> <condição inicial>
+
+
+Feito isto seus arquivos estarão prontos nas pastas arestas, distri_grau, hist, series_temporais.
+
+OBS: A entrada 'caso' foi limitada para ter apenas 6 opções, se o usuario tentar usar uma entrada não cadastrada receberá o seguinte retorno:
+
+$'Caso invalido'
+
+Os casos validos são: 
+
+LM_p1 = 3.5
+LM_fbp = 3.56995
+LM_int = 3.857
+LM_c1 = 3.87
+LM_c2 = 3.89
+LM_fc = 4.00
+
+
+A condição inicial não pode ser zero, caso seja não terá resultado algum.
