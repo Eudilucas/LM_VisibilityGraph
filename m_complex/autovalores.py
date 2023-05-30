@@ -7,12 +7,15 @@ import networkx as nx
 
 def diretorio(matriz,caso, nome):
 	matriz1 = '/home/eude/Desktop/IC/caos/arestas'
-	matriz2 = '/home/eude/Desktop/IC/caos/m_complex/espectral/LM_c1/autovalor'
+	matriz2 = '/home/eude/Desktop/IC/caos/m_complex/espectral'
 	casos = ['/LM_p1','LM_int','LM_fbp','LM_c1','LM_c2','LM_fc']
+	
 	barra = '/'
+	autovalor = 'autovalor'
 	tipo = '.txt'
 	
 	
+
 	nome = str(nome)
 	caso = float(caso)
 	matriz = int(matriz)
@@ -36,17 +39,17 @@ def diretorio(matriz,caso, nome):
 			print("Caso invalido")
 	if (matriz == 1):
 		if (caso == 3.5):
-			string = str(matriz2+casos[0]+barra+nome+tipo)
+			string = str(matriz2+casos[0]+barra+autovalor+barra+nome+tipo)
 		elif (caso == 3.56995):
-			string = str(matriz2+casos[1]+barra+nome+tipo)
+			string = str(matriz2+casos[1]+barra+autovalor+barra+nome+tipo)
 		elif (caso == 3.857):
-			string = str(matriz2+casos[2]+barra+nome+tipo)
+			string = str(matriz2+casos[2]+barra+autovalor+barra+nome+tipo)
 		elif (caso == 3.87):
-			string = str(matriz2+casos[3]+barra+nome+tipo)
+			string = str(matriz2+casos[3]+barra+autovalor+barra+nome+tipo)
 		elif (caso == 3.89):
-			string = str(matriz2+casos[4]+barra+nome+tipo)
+			string = str(matriz2+casos[4]+barra+autovalor+barra+nome+tipo)
 		elif (caso == 4):
-			string = str(matriz2+casos[5]+barra+nome+tipo)
+			string = str(matriz2+casos[5]+barra+autovalor+barra+nome+tipo)
 		else:
 			print("Caso invalido")
 
@@ -89,13 +92,19 @@ arq.close()
 pasta = diretorio(1, a, b)
 arquivo = open(pasta,'w')
 
-arquivo.white(B,"\n")
+for i in range(len(vec)):
+	arquivo.write(str(B[i]))
+	arquivo.write("\n")
 
-vec = arquivo.readlines()#lendo todo o arquivo linha a linha e adicionando ao vetor vec
+arquivo.close()
+
+
+arq = open(pasta,'r')
+vec = arq.readlines()#lendo todo o arquivo linha a linha e adicionando ao vetor vec
 
 for i in range(len(vec)):
 	
-	vec[i]=float(vec[i])-1 
+	vec[i]=float(vec[i]) 
 
 n = np.arange(0,len(vec),1) 
 
@@ -108,4 +117,4 @@ plt.plot(n,vec, color = 'k')
 
 plt.show()
 
-arquivo.close()
+arq.close()
