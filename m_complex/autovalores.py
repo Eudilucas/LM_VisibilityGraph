@@ -61,6 +61,7 @@ b = int(input('Digite o tamanho do arquivo txt '))
 print(diretorio(0, a, b))
 
 pasta = diretorio(0, a, b)
+print(pasta)
 arq = open(pasta, "r")
 
 vec=arq.readlines()
@@ -90,17 +91,22 @@ arq.close()
 
 
 pasta = diretorio(1, a, b)
+print(pasta)
 arquivo = open(pasta,'w')
 
 for i in range(len(vec)):
 	arquivo.write(str(B[i]))
 	arquivo.write("\n")
 
+arquivo.seek(0)
 arquivo.close()
 
 
-arq = open(pasta,'r')
-vec = arq.readlines()#lendo todo o arquivo linha a linha e adicionando ao vetor vec
+ptr = open(pasta,'r')
+
+vec=ptr.readlines()
+
+print(vec)
 
 for i in range(len(vec)):
 	

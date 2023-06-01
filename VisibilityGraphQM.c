@@ -122,7 +122,7 @@ int main( int argc, char** argv )
 }
 
 void diretorio_arquivo(int i, float j, int k, char* endereco) {
-	char diretorio[30] = "/home/pc/Desktop/IC/caos";
+	char diretorio[30] = "/home/eude/Desktop/IC/caos";
 	char pasta[4][18] = { "/series_temporais", "/arestas", "/hist", "/distri_grau" };
 	char caso[6][8] = { "/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc" };
 	char nome[13] = "", copia[5] = "", barra[6]="/";
@@ -143,18 +143,24 @@ void diretorio_arquivo(int i, float j, int k, char* endereco) {
 
 	if (j == 3.5) {
 		strcat(endereco, caso[0]);
-	} else if (j == 3.56995) {
+	}
+	else if ((int)(j/3.56995) == 1) {
 		strcat(endereco, caso[1]);
-	} else if (j == 3.857) {
+	} 
+	else if ((int)(j/3.857) == 1 ) {
 		strcat(endereco, caso[2]);
-	} else if (j == 3.87) {
+	} 
+	else if ((int)(j/3.87) == 1) {
 		strcat(endereco, caso[3]);
-	} else if (j == 3.89) {
+	}
+	else if ((int)(j/3.89) == 1) {
 		strcat(endereco, caso[4]);
-	} else if (j == 4.00) {
+	}
+	else if (j == 4.00) {
 		strcat(endereco, caso[5]);
-	} else {
-		printf("Caso nao existente de r\n");
+	} 
+	else {
+		printf("Caso nao existente de r= %f\n", j);
 		return;
 	}
 
