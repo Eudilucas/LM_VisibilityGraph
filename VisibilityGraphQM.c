@@ -144,16 +144,16 @@ void diretorio_arquivo(int i, float j, int k, char* endereco) {
 	if (j == 3.5) {
 		strcat(endereco, caso[0]);
 	}
-	else if ((int)(j/3.56995) == 1) {
+	else if ((j - 3.56995)<0.000001) {
 		strcat(endereco, caso[1]);
 	} 
-	else if ((int)(j/3.857) == 1 ) {
+	else if ((j - 3.857)<0.0001 ) {
 		strcat(endereco, caso[2]);
 	} 
-	else if ((int)(j/3.87) == 1) {
+	else if ((j - 3.87 )<0.001) {
 		strcat(endereco, caso[3]);
 	}
-	else if ((int)(j/3.89) == 1) {
+	else if ((j - 3.89)<0.001) {
 		strcat(endereco, caso[4]);
 	}
 	else if (j == 4.00) {
