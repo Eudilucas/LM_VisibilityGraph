@@ -47,7 +47,7 @@ int main( int argc, char** argv )
     float t, x0, r;
     char endereco1[200]="", endereco2[200]="", endereco3[200]="", endereco4[200]="";
 	void diretorio_arquivo(int i, float j, int k, char* endereco);
-	    	
+	int f_links = Ndata*(Ndata - 1);// N° maximo de arestas	    	
 	
 	sscanf (argv[1],"%d",&Ndata); 
 	sscanf (argv[2],"%d",&Delta);
@@ -103,16 +103,17 @@ int main( int argc, char** argv )
     ptr = fopen(endereco3,"w");//endereco
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
-    
-    int *hist = (int *) calloc(100,sizeof(int));
-    for (i=0; i<100; ++i) hist[i] = 0;
+
+    int *hist = (int *) calloc(f_links,sizeof(int));
+    for (i=0; i<f_links; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
     
     ptr = fopen(endereco4,"w");//endereco
 
     double n = 0.0;
-    for (i=0; i<100; ++i) n += hist[i];
-    for (i=0; i<100; ++i)
+
+    for (i=0; i<f_links; ++i) n += hist[i];
+    for (i=0; i<f_links; ++i)
 	if ( hist[i] ) fprintf(ptr,"%d, %f \n",i , hist[i]/n);
     fclose(ptr);
 
