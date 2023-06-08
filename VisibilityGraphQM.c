@@ -104,7 +104,7 @@ int main( int argc, char** argv )
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
 
-    int *hist = (int *) calloc(f_links,sizeof(int));
+    int *hist = (int *) calloc(100,sizeof(int));// modificacao eude
     for (i=0; i<f_links; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
     
