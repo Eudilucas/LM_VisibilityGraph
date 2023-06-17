@@ -105,15 +105,15 @@ int main( int argc, char** argv )
     fclose(ptr);
 
     int *hist = (int *) calloc(100,sizeof(int));// modificacao eude
-    for (i=0; i<f_links; ++i) hist[i] = 0;
+    for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
     
     ptr = fopen(endereco4,"w");//endereco
 
     double n = 0.0;
 
-    for (i=0; i<f_links; ++i) n += hist[i];
-    for (i=0; i<f_links; ++i)
+    for (i=0; i<100; ++i) n += hist[i];
+    for (i=0; i<100; ++i)
 	if ( hist[i] ) fprintf(ptr,"%d, %f \n",i , hist[i]/n);
     fclose(ptr);
 
