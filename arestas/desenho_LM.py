@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import pygraphviz as pgv
-
+'''
 def diretorio(caso, nome):
 	matriz = '/home/pc/Desktop/IC/caos/arestas'
 	casos = ['/LM_p1','LM_int','LM_fbp','LM_c1','LM_c2','LM_fc']
@@ -35,8 +35,8 @@ a = float(input('Digite o caso'))
 b = int(input('Digite o tamanho do arquivo txt'))
 	
 pasta = diretorio(a, b)
-
-arq =open(pasta, 'r') #Abrindo arquivo no modo leitura
+'''
+arq =open('/home/pc/Desktop/IC/caos/exemplos/exem_matriz.txt', 'r') #Abrindo arquivo no modo leitura
 
 vec=arq.readlines() #Transformando cada linha em entradas da lista
 
@@ -55,14 +55,16 @@ G=nx.Graph(vec)
 #pos = nx.nx_agraph.graphviz_layout(G, prog="twopi", args="")
 
 options = {
-#    "font_size": 0.2,
-    "node_size": 25,
-    "node_color": "black",
-    "edgecolors": "white",
-    "linewidths": 0.25,
-    "width": 0.25,}
+    "font_size": 10,
+    "node_size": 3000,
+    "node_color": "white",
+    "edgecolors": "black",
+    "linewidths": 5,
+    "width": 5,
+    "with_labels": True,
+    "font_weight":'bold'}
 
-nx.draw(G, **options)
+nx.draw(G, **options, )
 plt.axis("equal")
 
 plt.draw()  # pyplot draw()

@@ -6,8 +6,8 @@ import numpy as np
 import networkx as nx
 
 def diretorio(matriz,caso, nome):
-	matriz1 = '/home/eude/Desktop/IC/caos/arestas'
-	matriz2 = '/home/eude/Desktop/IC/caos/m_complex/espectral'
+	matriz1 = '/home/pc/Desktop/IC/caos/arestas'
+	matriz2 = '/home/pc/Desktop/IC/caos/m_complex/espectral'
 	casos = ['/LM_p1','LM_int','LM_fbp','LM_c1','LM_c2','LM_fc']
 	
 	barra = '/'
@@ -23,33 +23,36 @@ def diretorio(matriz,caso, nome):
 	string=''
 
 	if (matriz == 0):
+		
 		if (caso == 3.5):
 			string = str(matriz1+casos[0]+barra+nome+tipo)
-		elif (caso == 3.56995):
+		elif ((caso - 3.56995)<0.000001):
 			string = str(matriz1+casos[1]+barra+nome+tipo)
-		elif (caso == 3.857):
+		elif ((caso - 3.857)<0.0001):
 			string = str(matriz1+casos[2]+barra+nome+tipo)
-		elif (caso == 3.87):
+		elif ((caso - 3.87)<0.001):
 			string = str(matriz1+casos[3]+barra+nome+tipo)
-		elif (caso == 3.89):
+		elif ((caso - 3.89)<0.001):
 			string = str(matriz1+casos[4]+barra+nome+tipo)
 		elif (caso == 4):
 			string = str(matriz1+casos[5]+barra+nome+tipo)
 		else:
 			print("Caso invalido")
+
 	if (matriz == 1):
+			
 		if (caso == 3.5):
-			string = str(matriz2+casos[0]+barra+autovalor+barra+nome+tipo)
-		elif (caso == 3.56995):
-			string = str(matriz2+casos[1]+barra+autovalor+barra+nome+tipo)
-		elif (caso == 3.857):
-			string = str(matriz2+casos[2]+barra+autovalor+barra+nome+tipo)
-		elif (caso == 3.87):
-			string = str(matriz2+casos[3]+barra+autovalor+barra+nome+tipo)
-		elif (caso == 3.89):
-			string = str(matriz2+casos[4]+barra+autovalor+barra+nome+tipo)
+			string = str(matriz2+casos[0]+barra+nome+tipo)
+		elif ((caso - 3.56995)<0.000001):
+			string = str(matriz2+casos[1]+barra+nome+tipo)
+		elif ((caso - 3.857)<0.0001):
+			string = str(matriz2+casos[2]+barra+nome+tipo)
+		elif ((caso - 3.87)<0.001):
+			string = str(matriz2+casos[3]+barra+nome+tipo)
+		elif ((caso - 3.89)<0.001):
+			string = str(matriz2+casos[4]+barra+nome+tipo)
 		elif (caso == 4):
-			string = str(matriz2+casos[5]+barra+autovalor+barra+nome+tipo)
+			string = str(matriz2+casos[5]+barra+nome+tipo)
 		else:
 			print("Caso invalido")
 
@@ -58,10 +61,10 @@ def diretorio(matriz,caso, nome):
 
 a = float(input('Digite o caso '))
 b = int(input('Digite o tamanho do arquivo txt '))
-print(diretorio(0, a, b))
+
 
 pasta = diretorio(0, a, b)
-print(pasta)
+
 arq = open(pasta, "r")
 
 vec=arq.readlines()

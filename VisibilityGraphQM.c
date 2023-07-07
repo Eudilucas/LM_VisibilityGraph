@@ -104,17 +104,17 @@ int main( int argc, char** argv )
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
     fclose(ptr);
 
+    ptr = fopen(endereco4,"w");//endereco	
     int *hist = (int *) calloc(100,sizeof(int));// modificacao eude
     for (i=0; i<f_links; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
     
-    ptr = fopen(endereco4,"w");//endereco
 
     double n = 0.0;
-
     for (i=0; i<f_links; ++i) n += hist[i];
     for (i=0; i<f_links; ++i)
 	if ( hist[i] ) fprintf(ptr,"%d, %f \n",i , hist[i]/n);
+	//free(hist);
     fclose(ptr);
 
 
@@ -123,7 +123,7 @@ int main( int argc, char** argv )
 }
 
 void diretorio_arquivo(int i, float j, int k, char* endereco) {
-	char diretorio[30] = "/home/eude/Desktop/IC/caos";
+	char diretorio[30] = "/home/pc/Desktop/IC/caos";
 	char pasta[4][18] = { "/series_temporais", "/arestas", "/hist", "/distri_grau" };
 	char caso[6][8] = { "/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc" };
 	char nome[13] = "", copia[5] = "", barra[6]="/";

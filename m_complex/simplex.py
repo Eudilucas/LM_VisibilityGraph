@@ -23,20 +23,22 @@ def diretorio(caso, nome):
 	
 	string=''
 	
+	
 	if (caso == 3.5):
 		string = str(matriz+casos[0]+barra+nome+tipo)
-	elif (caso == 3.56995):
+	elif ((caso - 3.56995)<0.000001):
 		string = str(matriz+casos[1]+barra+nome+tipo)
-	elif (caso == 3.857):
+	elif ((caso - 3.857)<0.0001):
 		string = str(matriz+casos[2]+barra+nome+tipo)
-	elif (caso == 3.87):
+	elif ((caso - 3.87)<0.001):
 		string = str(matriz+casos[3]+barra+nome+tipo)
-	elif (caso == 3.89):
+	elif ((caso - 3.89)<0.001):
 		string = str(matriz+casos[4]+barra+nome+tipo)
 	elif (caso == 4):
 		string = str(matriz+casos[5]+barra+nome+tipo)
 	else:
 		print("Caso invalido")
+
 
 	return string
 
