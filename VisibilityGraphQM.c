@@ -101,11 +101,11 @@ int main( int argc, char** argv )
     
     
     ptr = fopen(endereco3,"w");//endereco
-    for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);
+    for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);// Aqui não é um histograma. Mas sim o grau de cada nó.
     fclose(ptr);
 
     ptr = fopen(endereco4,"w");//endereco	
-    int *hist = (int *) calloc(100,sizeof(int));// modificacao eude
+    int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
     for (i=0; i<Ndata; ++i) ++hist[deg[i]];
     
@@ -114,9 +114,11 @@ int main( int argc, char** argv )
 
 
     for (i=0; i<100; ++i) n += hist[i];
-    for (i=0; i<100; ++i)
+    for (i=0; i<100; ++i){
 
-	if ( hist[i] ) fprintf(ptr,"%d, %f \n",i , hist[i]/n);
+	if ( hist[i] ){ fprintf(ptr,"%d, %f \n",i , hist[i]/n);
+	printf("%d, %d \n",i , hist[i]);
+}}
 	//free(hist);
     fclose(ptr);
 
@@ -126,7 +128,7 @@ int main( int argc, char** argv )
 }
 
 void diretorio_arquivo(int i, float j, int k, char* endereco) {
-	char diretorio[30] = "/home/pc/Desktop/IC/caos";
+	char diretorio[30] = "/home/eude/Desktop/IC/caos";
 	char pasta[4][18] = { "/series_temporais", "/arestas", "/hist", "/distri_grau" };
 	char caso[6][8] = { "/LM_p1","/LM_fbp","/LM_int","/LM_c1","/LM_c2","/LM_fc" };
 	char nome[13] = "", copia[5] = "", barra[6]="/";
