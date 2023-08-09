@@ -38,16 +38,16 @@ fc = []
 diretorio6 = '/home/eude/Desktop/IC/caos/histograma/LM_fc/hist' + n + '.dat'
 x6, fc = vetor(diretorio6)
 
-#fig, axs = plt.subplots(3, 2)
+fig, axs = plt.subplots(3, 2)
 
-fig, axs = plt.subplots(1, 1)
+#fig, axs = plt.subplots(1, 1)
 
 
 
-axs[0].bar(x1, p1, width = 2)
-axs[0].set_title('Periodic')
+axs[0, 0].bar(x1, p1)
+axs[0, 0].set_title('Periodic')
 
-'''
+
 axs[1, 0].bar(x2, fbp)
 axs[1, 0].set_title('Feigenbaun Point')
 
@@ -57,13 +57,13 @@ axs[2, 0].set_title('Intermmitent')
 axs[0, 1].bar(x4, c1)
 axs[0, 1].set_title('Chaos 1')
 
-axs[1].bar(x5, c2, width = largura_barras)
-axs[1].set_title('Chaos 2')
+axs[1, 1].bar(x5, c2)
+axs[1, 1].set_title('Chaos 2')
 
 
 axs[2, 1].bar(x6, fc)
 axs[2, 1].set_title('Full chaos')
-'''
+
 
 # Adicionar legenda em cada subplot
 #axs[0, 0].legend([n + ' dados'])
@@ -76,7 +76,7 @@ axs[2, 1].set_title('Full chaos')
 plt.suptitle('Histograma')
 plt.tight_layout()
 
-nome_arquivo = "/home/eude/Desktop/IC/caos/histograma/hist_"+ n +".png"
+nome_arquivo = "/home/eude/Desktop/IC/caos/histograma/resultado/hist_"+ n +".png"
 plt.savefig(nome_arquivo)
 # Mostrar o gráfico
 plt.show()

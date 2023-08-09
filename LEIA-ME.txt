@@ -2,23 +2,32 @@
 
 Quanto a utilização do programa.
 
-O Visibility é a matriz do programa. Entretanto apenas ele só será possivel ver dados
-Para que possa ver as medidas é necessario rodas os programas postos dentro da pasta 
-arestas. Lá serão exibidas as principais medidas de complexidade extraidas do Visibility
+O VisibilityGraphQM.c é a núcleo do programa, a partir dele são gerados os dados advindos da serie temporal e convertidos em arestas (relacionados ao grafo associado), histograma (do também grafo associado) e distribuição de grau (naturalmente, do grafo que a originou). Para uma necessaria visualisação é necessário usar os programas postos dentro da pasta (~/arestas/graficos, ~/distri_grau/graficos, ~/hist/graficos, ~/histograma/graficos). Nestes mesmos diretorios estarão nossos resultados.
 
 O programa Visibility é feito em C e portanto necessita de ser compilado e rodado.
-Quanto as medidas de complexidade são feitas em python ou seja é interpretada a medida que é 
-rodada.
+Quanto as medidas de complexidade
 
-Para rodar o Visibility entre no terminal dentro do diretorio do programa e use:
+Algumas são feitas em python e já não necessitam ser compiladas pasta ir no diretorio através do terminal e rodar o programa desejado, assim:
 
-$ gcc VisibilityGraphQM.c -o VisibilityGraphQM
-$./VisibilityGraphQM <numero de dados> <distancia entre visinhos> <caso> <condição inicial>
+$~./programa_python.py
 
+
+Para rodar o Visibility entre no terminal e vá até o diretório do programa e use:
+
+$ gcc VisibilityGraphQM.c -lm -o VisibilityGraphQM
+$./VisibilityGraphQM <numero de dados> <distancia entre vizinhos> <caso> <condição inicial>
+
+
+ou dê a permissão para o arquivo "executar.sh", faça modificações caso queira e rode ele no terminal assim,
+
+~./executar.sh
+
+
+OBS1: Todos os programas possuem metodos ou funções que só funcionam máquina em específico, pois esses tais métodos ou funções manipulam os diretórios, por este motivo você deve modificar ou construir uma nova forma de organizar os diretorios.
 
 Feito isto seus arquivos estarão prontos nas pastas arestas, distri_grau, hist, series_temporais.
 
-OBS: A entrada 'caso' foi limitada para ter apenas 6 opções, se o usuario tentar usar uma entrada não cadastrada receberá o seguinte retorno:
+OBS2: A entrada 'caso' foi limitada para ter apenas 6 opções, se o usuario tentar usar uma entrada não cadastrada receberá o seguinte retorno:
 
 $'Caso invalido'
 

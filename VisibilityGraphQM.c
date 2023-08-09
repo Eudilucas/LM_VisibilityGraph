@@ -1,45 +1,13 @@
-// includes, system
+//Autor: Adauto J. Ferreira de Souza
+//Co-autor: Eude Lucas S. da Silva
+//Universidade Federal Rural de Pernambuco - UFRPE
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include <string.h>
 #include <math.h>
-#include <stdint.h>
-#define __STDC_FORMAT_MACROS //pre-processamento
-#include <inttypes.h>
 
-static inline uint64_t rotl(const uint64_t x, int k) {
-	return (x << k) | (x >> (64 - k));
-}
 
-uint64_t next(uint64_t *s) {
-	const uint64_t result_starstar = rotl(s[1] * 5, 7) * 9;
 
-	const uint64_t t = s[1] << 17;
-
-	s[2] ^= s[0];
-	s[3] ^= s[1];
-	s[1] ^= s[2];
-	s[0] ^= s[3];
-
-	s[2] ^= t;
-
-	s[3] = rotl(s[3], 45);
-
-	return result_starstar;
-}
-
-uint64_t seed(uint64_t x) {
-	uint64_t z = (x += 0x9e3779b97f4a7c15);
-	z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9;
-	z = (z ^ (z >> 27)) * 0x94d049bb133111eb;
-	return z ^ (z >> 31);
-}
-
-double rnd(uint64_t x) {
-	return (x >> 11) * (1. / (UINT64_C(1) << 53)); //retorna um double em [0,1)
-}
-//================================== ASSUMO MINHA IGNORANCIA DAQUI PRA CIMA ======================================
 int main( int argc, char** argv )
 {
     FILE *ptr;
@@ -55,12 +23,6 @@ int main( int argc, char** argv )
 	sscanf (argv[4],"%f",&x0);
 
 
-    srand( time(0) );
-    uint64_t x, st[4]; //Isso me parece ser da aleatóriedade dos números
-    for (j=0; j<4; ++j) {
-	for (i=0; i<100; ++i) x = rand();
-	st[j] = seed(x);
-    }
     int *deg = (int *) calloc(Ndata,sizeof(int)); 
     float *data = (float *) calloc(Ndata,sizeof(float));
     data[0] = x0;
@@ -119,7 +81,7 @@ int main( int argc, char** argv )
 	if ( hist[i] ){ fprintf(ptr,"%d, %f \n",i , hist[i]/n);
 	printf("%d, %d \n",i , hist[i]);
 }}
-	//free(hist);
+
     fclose(ptr);
 
 
