@@ -3,11 +3,11 @@ import numpy as np
 
 
 '''
-Abrir aequivo com as arestas e criar o grafo
-contar os caminhos
-adicionar em um vetor
-contar o numero de Nós
-Criar um vetor com o numero de N
+Abrir arquivos com as arestas e criar o grafo --> Devo criar um metodo que faz isso.
+Contar os caminhos.
+Adicionar em um vetor.
+Contar o numero de Nós.
+Criar um vetor com o numero de N.
 '''
 
 
