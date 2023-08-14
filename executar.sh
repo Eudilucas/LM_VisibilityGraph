@@ -10,40 +10,14 @@ for ((i=0;i<=5;i++))
 
 do
 
+for ((j=2;j<=4000;j++))
+
+do
 
 
-#for ((j=62500;j<=65000;j++))
+	./VisibilityGraphQM $j $j  ${r[i]} 0.1
 
-#do
-
-if [ $i -eq 0 ]; then
-	./VisibilityGraphQM 60000 60000  ${r[i]} 0.1 > ~/Desktop/IC/caos/histograma/LM_p1/hist/$j.dat
-
-fi
-
-if [ $i -eq 1 ]; then
-	./VisibilityGraphQM 60000 60000 ${r[i]} 0.1 > ~/Desktop/IC/caos/histograma/LM_fbp/hist/$j.dat
-fi
-
-if [ $i -eq 2 ]; then
-	./VisibilityGraphQM 60000 60000 ${r[i]} 0.1 > ~/Desktop/IC/caos/histograma/LM_int/hist/$j.dat
-fi
-
-
-if [ $i -eq 3 ]; then
-	./VisibilityGraphQM 60000 60000 ${r[i]} 0.1 > ~/Desktop/IC/caos/histograma/LM_c1/hist/$j.dat
-fi
-
-if [ $i -eq 4 ]; then
-	./VisibilityGraphQM 60000 60000 ${r[i]} 0.1 > ~/Desktop/IC/caos/histograma/LM_c2/hist/$j.dat
-fi
-
-if [ $i -eq 5 ]; then
-	./VisibilityGraphQM 60000 60000 ${r[i]} 0.1 > ~/Desktop/IC/caos/histograma/LM_fc/hist/$j.dat
-fi
-
-
-#done
+done
 
 done
 

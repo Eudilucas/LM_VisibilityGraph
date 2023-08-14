@@ -49,8 +49,6 @@ diretorio6 = '/home/eude/Desktop/IC/caos/distri_grau/LM_fc/' + n + '.txt'
 x6, fc =vetor(diretorio6)
 
 
-#Criar um array do tamanho do arquivo
-
 		
 
 

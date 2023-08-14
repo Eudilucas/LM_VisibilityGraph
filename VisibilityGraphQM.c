@@ -55,13 +55,13 @@ int main( int argc, char** argv )
 	    if ( visible ) {
 		++deg[i];
 		++deg[j];
-		fprintf(ptr,"%d, %d\n",i,j);
+		fprintf(ptr,"%d %d\n",i,j);
 	    }
 	}
     }
     fclose(ptr);
     
-    
+/*   
     ptr = fopen(endereco3,"w");//endereco
     for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);// Aqui não é um histograma. Mas sim o grau de cada nó.
     fclose(ptr);
@@ -85,7 +85,7 @@ int main( int argc, char** argv )
     fclose(ptr);
 
 
-
+*/
     return 0;
 }
 
