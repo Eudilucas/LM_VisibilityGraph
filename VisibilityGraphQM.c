@@ -15,7 +15,7 @@ int main( int argc, char** argv )
     float t, x0, r;
     char endereco1[200]="", endereco2[200]="", endereco3[200]="", endereco4[200]="";
 	void diretorio_arquivo(int i, float j, int k, char* endereco);
-	int f_links = Ndata*(Ndata - 1);// N° maximo de arestas	    	
+	
 	
 	sscanf (argv[1],"%d",&Ndata); 
 	sscanf (argv[2],"%d",&Delta);
@@ -61,11 +61,11 @@ int main( int argc, char** argv )
     }
     fclose(ptr);
     
-/*   
+  
     ptr = fopen(endereco3,"w");//endereco
-    for (i=0; i<Ndata; ++i) fprintf(ptr,"%d, %d\n",i,deg[i]);// Aqui não é um histograma. Mas sim o grau de cada nó.
+    for (i=0; i<Ndata; ++i)/*  fprintf(ptr,"%d, %d\n",i,deg[i]);// Aqui não é um histograma. Mas sim o grau de cada nó.
     fclose(ptr);
-
+*/
     ptr = fopen(endereco4,"w");//endereco	
     int *hist = (int *) calloc(100,sizeof(int));
     for (i=0; i<100; ++i) hist[i] = 0;
@@ -85,7 +85,7 @@ int main( int argc, char** argv )
     fclose(ptr);
 
 
-*/
+
     return 0;
 }
 
